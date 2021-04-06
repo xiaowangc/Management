@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Management.iml" filepath="$PROJECT_DIR$/.idea/Management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/management-common/management-common.iml" filepath="$PROJECT_DIR$/management-common/management-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/management-parent/management-parent.iml" filepath="$PROJECT_DIR$/management-parent/management-parent.iml" />
     </modules>
   </component>
 </project>
