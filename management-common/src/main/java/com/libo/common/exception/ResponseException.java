@@ -1,4 +1,4 @@
-package com.libo.exception;
+package com.libo.common.exception;
 
 
 public class ResponseException extends RuntimeException {

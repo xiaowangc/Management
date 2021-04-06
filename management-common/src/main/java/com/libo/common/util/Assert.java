@@ -1,6 +1,6 @@
-package com.libo.util;
+package com.libo.common.util;
 
-import com.libo.exception.ResponseException;
+import com.libo.common.exception.ResponseException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.CollectionUtils;
 

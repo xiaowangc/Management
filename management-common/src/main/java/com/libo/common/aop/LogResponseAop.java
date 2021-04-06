@@ -1,4 +1,4 @@
-package com.libo.aop;
+package com.libo.common.aop;
 
 import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;

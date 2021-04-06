@@ -1,4 +1,4 @@
-package com.libo.util;
+package com.libo.common.util;
 
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;

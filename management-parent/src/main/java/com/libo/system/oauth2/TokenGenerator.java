@@ -1,6 +1,6 @@
 package com.libo.system.oauth2;
 
-import com.libo.exception.ResponseException;
+import com.libo.common.exception.ResponseException;
 
 import java.security.MessageDigest;
 import java.util.UUID;

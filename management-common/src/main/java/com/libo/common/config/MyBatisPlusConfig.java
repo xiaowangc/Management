@@ -1,4 +1,4 @@
-package com.libo.config;
+package com.libo.common.config;
 
 
 import com.baomidou.mybatisplus.annotation.DbType;

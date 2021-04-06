@@ -1,8 +1,8 @@
 package com.libo.system.oauth2;
 
 import cn.hutool.json.JSONUtil;
-import com.libo.response.Response;
-import com.libo.util.HttpContextUtil;
+import com.libo.common.response.Response;
+import com.libo.common.util.HttpContextUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpStatus;

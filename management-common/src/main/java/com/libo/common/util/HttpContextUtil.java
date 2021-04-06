@@ -1,4 +1,4 @@
-package com.libo.util;
+package com.libo.common.util;
 
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;

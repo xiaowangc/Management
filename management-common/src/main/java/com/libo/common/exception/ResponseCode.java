@@ -1,4 +1,4 @@
-package com.libo.exception;
+package com.libo.common.exception;
 
 
 import org.apache.http.HttpStatus;

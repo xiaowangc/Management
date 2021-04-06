@@ -1,7 +1,7 @@
-package com.libo.response;
+package com.libo.common.response;
 
 
-import com.libo.exception.ResponseCode;
+import com.libo.common.exception.ResponseCode;
 import lombok.Data;
 import org.apache.http.HttpStatus;
 

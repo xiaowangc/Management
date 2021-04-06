@@ -1,10 +1,10 @@
-package com.libo.interception;
+package com.libo.common.interception;
 
 
-import com.libo.exception.ResponseCode;
-import com.libo.exception.ResponseException;
-import com.libo.response.Response;
-import com.libo.util.RequestReadUtils;
+import com.libo.common.exception.ResponseCode;
+import com.libo.common.exception.ResponseException;
+import com.libo.common.response.Response;
+import com.libo.common.util.RequestReadUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
