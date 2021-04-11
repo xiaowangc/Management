@@ -1,6 +1,7 @@
 package com.libo.system.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -19,10 +20,12 @@ public class SysUserEntity implements Serializable {
     /**
      *  用户名
      */
+    @TableField("name")
     private String name;
     /**
      *  昵称
      */
+    @TableField("nickname")
     private String nickName;
     /**
      *  密码

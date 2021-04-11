@@ -1,5 +1,6 @@
 package com.libo.system.controller;
 
+import com.libo.common.exception.ResponseCode;
 import com.libo.common.exception.ResponseException;
 import com.libo.common.response.Response;
 import com.libo.system.constants.UserIdTypeConstants;
@@ -14,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-@Api("用户管理")
+@Api(tags = "用户管理")
 @Slf4j
 @RequestMapping("/sys/user")
 @RestController
@@ -46,6 +47,9 @@ public class SysUserController {
     @ApiOperation("删除指定用户")
     @PostMapping("/delete/{id}")
     public Response deleteUser(@PathVariable("id") Integer userId) {
+        if (UserIdTypeConstants.USER_SUPER.equals(userId)) {
+            throw new ResponseException(ResponseCode.DELETE_USER_FAIL);
+        }
         boolean b = userService.removeById(userId);
         if (!b) {
             return  Response.error("删除用户信息失败");
@@ -57,8 +61,8 @@ public class SysUserController {
     public Response list(@RequestParam(value = "pagenum",defaultValue = "1") Integer pageNum,
                          @RequestParam(value = "pagesize",defaultValue = "10") Integer pageSize,
                          @RequestParam(value = "query") String userName) {
-        SysUserListByPageVO pageVO = userService.selectListByPage(pageNum,pageSize,userName);
-        return Response.ok().data("userList",pageVO);
+        SysUserListByPageVO userList = userService.selectListByPage(pageNum,pageSize,userName);
+        return Response.ok().data(userList);
     }
 
 }

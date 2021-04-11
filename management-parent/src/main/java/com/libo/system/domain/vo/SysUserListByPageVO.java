@@ -12,6 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 public class SysUserListByPageVO {
 
-    private List<SysUserEntity> list;
+    private List<SysUserEntity> userList;
     private Integer totalNum;
 }

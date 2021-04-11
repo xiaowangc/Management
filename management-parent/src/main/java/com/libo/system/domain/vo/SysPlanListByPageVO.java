@@ -11,6 +11,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SysPlanListByPageVO {
-    private List<SysPlanEntity> list;
+    private List<SysPlanEntity> planList;
     private Integer totalNum;
 }

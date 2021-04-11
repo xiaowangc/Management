@@ -15,11 +15,14 @@ public enum ResponseCode {
      */
     SERVER_ERROR(10001,"系统内部出错"),
     PARAM_INVALID(10002,"参数校验有误！"),
+
     /** 30001 - 39999
      *  业务导致的错误
      */
     SYS_USER_EXIST(30001,"角色已经存在！"),
     ARTICLE_NO_FUND(HttpStatus.SC_NOT_FOUND,"文章不存在"),
+    DELETE_ERROR(30002,"请先删除商品目录中对应的商品"),
+    DELETE_USER_FAIL(30003,"删除账户失败，无权限"),
 
     /** 40001 - 49999
      *  调用第三方出错

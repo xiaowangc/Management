@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.libo.system.dao.SysTalentDao">
-
-    <select id="selectListByPage" resultType="com.libo.system.domain.entity.SysTalentEntity">
+    <resultMap id="talent" type="com.libo.system.domain.entity.SysTalentEntity">
+        <id column="id" property="talId" jdbcType="INTEGER"></id>
+        <result column="name" property="talName" jdbcType="VARCHAR"></result>
+        <result column="amount" property="talAmount" jdbcType="INTEGER"></result>
+        <result column="tag" property="talTag" jdbcType="INTEGER"></result>
+        <result column="grade" property="talGrade" jdbcType="INTEGER"></result>
+        <result column="company" property="talCompany" jdbcType="VARCHAR"></result>
+    </resultMap>
+    <select id="selectListByPage" resultMap="talent">
         select *
         from talents
         <where>

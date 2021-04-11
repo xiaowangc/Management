@@ -43,8 +43,8 @@ public class SysPlanController {
     public Response getPlanList(@RequestParam(name = "pagenum",defaultValue = "1") Integer pageNum,
                                 @RequestParam(name = "pagesize",defaultValue = "10")Integer pageSize,
                                 @RequestParam(name = "query")String planName){
-        SysPlanListByPageVO pageVO = planService.selectPlanByPage(pageNum,pageSize,planName);
-        return Response.ok().data("plansList",pageVO);
+        SysPlanListByPageVO plansList = planService.selectPlanByPage(pageNum,pageSize,planName);
+        return Response.ok().data(plansList);
     }
 
 

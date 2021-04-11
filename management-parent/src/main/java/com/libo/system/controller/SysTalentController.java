@@ -45,7 +45,7 @@ public class SysTalentController {
     public Response list(@RequestParam(name = "pagenum",defaultValue = "1") Integer pageNum,
                          @RequestParam(name = "pagesize",defaultValue = "10") Integer pageSize,
                          @RequestParam("query") String talentName) {
-        SysTalentListByPageVO pageVO = talentService.selectListByPage(pageNum,pageSize,talentName);
-        return Response.ok().data("talentList",pageVO);
+        SysTalentListByPageVO talentList = talentService.selectListByPage(pageNum,pageSize,talentName);
+        return Response.ok().data(talentList);
     }
 }

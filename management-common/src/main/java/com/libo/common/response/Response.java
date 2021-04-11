@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Data
-public class Response {
+public class Response<T> {
 
     /**
      *  1成功 其他失败
@@ -18,7 +18,7 @@ public class Response {
 
     public String msg;
 
-    public Map<String,Object> data;
+    public T data;
 
     /**
      *  构造方法私有，里面的方法都是静态方法，达到保护属性的作用
@@ -34,7 +34,7 @@ public class Response {
     /**
      *  使用链式编程
      */
-    public static  Response ok() {
+    public static Response ok() {
         Response response = new Response();
         response.setCode(ResponseCode.SUCCESS.getCode());
         response.setMsg(ResponseCode.SUCCESS.getMsg());
@@ -67,14 +67,8 @@ public class Response {
         this.setMsg(msg);
         return this;
     }
-    public Response data(Map<String,Object> map) {
-        this.setData(map);
-        return this;
-    }
-    public Response data(String key,Object obj) {
-        Map<String,Object> map = new HashMap<>(2);
-        map.put(key,obj);
-        this.data(map);
+    public Response<T> data(T data) {
+        this.setData(data);
         return this;
     }
 

@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class SysCategoryEntity implements Serializable {
 
     private static final long serialVersionUID = 6879246324474328173L;
-    @TableId(type = IdType.AUTO)
+    @TableId(value = "category_id",type = IdType.AUTO)
     private Integer categoryId;
     @NotBlank
     private String categoryName;

@@ -2,12 +2,9 @@ package com.libo.system.service.impl;
 
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.libo.system.dao.SysGoodsDao;
 import com.libo.system.dao.SysPlanDao;
-import com.libo.system.domain.entity.SysGoodsEntity;
 import com.libo.system.domain.entity.SysPlanEntity;
 import com.libo.system.domain.vo.SysPlanListByPageVO;
-import com.libo.system.service.SysGoodsService;
 import com.libo.system.service.SysPlanService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -29,7 +26,7 @@ public class SysPlanServiceImpl extends ServiceImpl<SysPlanDao, SysPlanEntity> i
         pageVO.setTotalNum(totalNum);
         Integer offset = (pageNum - 1) * pageSize;
         List<SysPlanEntity> planEntityList = baseMapper.selectPlanByPage(offset,pageSize,planName);
-        pageVO.setList(planEntityList);
+        pageVO.setPlanList(planEntityList);
         log.info("查询到的推广计划为：{}", JSONUtil.toJsonStr(pageVO));
         return pageVO;
     }

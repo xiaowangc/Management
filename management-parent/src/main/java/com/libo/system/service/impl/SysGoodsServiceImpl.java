@@ -1,12 +1,9 @@
 package com.libo.system.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.libo.system.dao.SysCategoryDao;
 import com.libo.system.dao.SysGoodsDao;
-import com.libo.system.domain.entity.SysCategoryEntity;
 import com.libo.system.domain.entity.SysGoodsEntity;
 import com.libo.system.domain.vo.SysGoodsListByPageVO;
-import com.libo.system.service.SysCategoryService;
 import com.libo.system.service.SysGoodsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -28,7 +25,7 @@ public class SysGoodsServiceImpl extends ServiceImpl<SysGoodsDao, SysGoodsEntity
         pageVO.setTotalNum(count);
         Integer offset = (pageNum - 1) * pageSize;
         List<SysGoodsEntity> goodsList = baseMapper.selectGoodsByPage(offset,pageSize,goodsName);
-        pageVO.setList(goodsList);
+        pageVO.setGoodsList(goodsList);
         return pageVO;
     }
 }

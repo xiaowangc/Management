@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 public class SysGoodsListByPageVO {
 
-    private List<SysGoodsEntity> list;
+    private List<SysGoodsEntity> goodsList;
     /**
      *  总数量
      */

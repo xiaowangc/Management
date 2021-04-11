@@ -25,4 +25,4 @@ mybatis-plus:
 
 logging:
   level:
-    com.libo.mapper: debug
+    com.libo.system.dao: debug

@@ -13,7 +13,7 @@ import java.util.List;
 public class SysTalentListByPageVO {
 
 
-    private List<SysTalentEntity> list;
+    private List<SysTalentEntity> talentList;
     private Integer totalNum;
 
 

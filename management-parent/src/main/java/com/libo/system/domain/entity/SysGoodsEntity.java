@@ -20,25 +20,21 @@ public class SysGoodsEntity implements Serializable {
     /**
      * 商品名称
      */
-    @TableField(value = "name")
     @NotBlank
     private String goodsName;
 
     /**
      * 商品价格
      */
-    @TableField(value = "price")
     private Float goodsPrice;
     /**
      * 商品数量
      */
-    @TableField(value = "amount")
     private Integer goodsAmount;
 
     /**
      * 商品类目id
      */
-    @TableField(value = "category_id")
     private Integer categoryId;
 
     private String goodsCategory;
@@ -46,7 +42,6 @@ public class SysGoodsEntity implements Serializable {
     /**
      * 佣金率
      */
-    @TableField(value = "rae")
     private Float goodsRate;
 
 

@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.libo.system.dao.SysCategoryDao">
-        <select id="countGoodsNumByCategoryId" resultType="integer">
+    <resultMap id="categoryEntity" type="com.libo.system.domain.entity.SysCategoryEntity">
+        <id column="category_id" property="categoryId" jdbcType="INTEGER"></id>
+        <result column="category_name" property="categoryName" jdbcType="VARCHAR"></result>
+    </resultMap>
+
+    <select id="countGoodsNumByCategoryId" resultType="integer">
             select count(*)
             from goods
             where category_id = #{categoryId}
         </select>
-    <select id="countAllGoodsNum" resultType="java.util.Map">
-        select name,count(id)
+    <select id="countAllGoodsNum" resultType="com.libo.system.domain.vo.CountGoodsNumVO">
+        select name as categoryName,count(id) as goodsNum
         from goods
         group by category_id
     </select>
+
+    <insert id="insertCategory">
+        insert into category
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            category_name
+        </trim>
+         values
+        <trim suffixOverrides="," prefix="(" suffix=")">
+            #{entity.categoryName}
+        </trim>
+    </insert>
 </mapper>

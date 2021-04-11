@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.libo.system.dao.SysPlanDao">
-
+    <resultMap id="plan" type="com.libo.system.domain.entity.SysPlanEntity">
+        <id column="id" property="id" javaType="INTEGER"></id>
+        <result column="name" property="plName" javaType="STRING"></result>
+        <result column="goodsname" property="goodsName" javaType="STRING" jdbcType="VARCHAR"></result>
+        <result column="talname" property="talName" jdbcType="VARCHAR"></result>
+        <result column="rate" property="plRate" jdbcType="FLOAT"></result>
+        <result column="grade" property="plGrade" jdbcType="INTEGER"></result>
+        <result column="amount" property="plAmount" jdbcType="INTEGER"></result>
+    </resultMap>
     <sql id="column">
         id,name,goodsname,talname,rate,grade,amount,create_time
     </sql>
 
-    <select id="selectPlanByPage" resultType="com.libo.system.domain.entity.SysPlanEntity">
+    <select id="selectPlanByPage" resultMap="plan">
         select <include refid="column"/>
-        from plan
+        from plans
         <where>
             <if test="planName != null and planName != ''">
                 name = #{planName}

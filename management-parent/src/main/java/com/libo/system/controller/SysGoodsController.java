@@ -12,6 +12,9 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 @Api(tags = "商品信息管理")
 @RestController
@@ -28,7 +31,7 @@ public class SysGoodsController {
                             @RequestParam(value = "pagesize",defaultValue = "10")Integer pageSize,
                             @RequestParam(value = "query") String goodsName){
         SysGoodsListByPageVO goodsListByPageVO = goodsService.selectGoodsByPage(pageNum,pageSize,goodsName);
-        return Response.ok().data("goodsList",goodsListByPageVO);
+        return Response.ok().data(goodsListByPageVO);
     }
     @ApiOperation("新增商品")
     @PostMapping("/sava")
