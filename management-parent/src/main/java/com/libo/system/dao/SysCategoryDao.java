@@ -1,0 +1,10 @@
+package com.libo.system.dao;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.libo.system.domain.entity.SysCategoryEntity;
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface SysCategoryDao extends BaseMapper<SysCategoryEntity> {
+}

@@ -11,11 +11,8 @@ spring:
     default-property-inclusion: NON_NULL
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/management?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2b8
-    username: root
-    password: 123.com
+  profiles:
+    active: dev
 
 mybatis-plus:
   configuration:
