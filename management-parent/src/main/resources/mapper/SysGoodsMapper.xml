@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.libo.system.domain.entity.SysGoodsEntity">
+<mapper namespace="com.libo.system.dao.SysGoodsDao">
 
-
+    <select id="selectGoodsByPage" resultType="com.libo.system.domain.entity.SysGoodsEntity">
+        select * from goods
+        <where>
+            <if test="goodsName != null and goodsName != ''">
+                name = #{goodsName},
+            </if>
+        </where>
+        limit #{offset},#{pageSize}
+    </select>
     <!--    <select id="selectByName"></select>-->
 </mapper>

@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.libo.system.domain.entity.SysTalentEntity">
+<mapper namespace="com.libo.system.dao.SysTalentDao">
 
+    <select id="selectListByPage" resultType="com.libo.system.domain.entity.SysTalentEntity">
+        select *
+        from talents
+        <where>
+            <if test="talentName != null and talentName != ''">
+                name = #{talentName}
+            </if>
+        </where>
+        limit #{offset},#{pageSize}
+    </select>
 
 </mapper>

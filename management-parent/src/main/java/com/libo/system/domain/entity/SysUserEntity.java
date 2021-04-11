@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Data
@@ -31,6 +32,7 @@ public class SysUserEntity implements Serializable {
     /**
      *  账号权限 1一级管理员 2二级管理员
      */
+    @NotNull
     private Integer authority;
 
 

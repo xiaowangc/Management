@@ -1,6 +1,7 @@
 package com.libo.system.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -19,27 +20,34 @@ public class SysGoodsEntity implements Serializable {
     /**
      * 商品名称
      */
+    @TableField(value = "name")
     @NotBlank
-    private String name;
+    private String goodsName;
 
     /**
      * 商品价格
      */
-    private Float price;
+    @TableField(value = "price")
+    private Float goodsPrice;
     /**
      * 商品数量
      */
-    private Integer amount;
+    @TableField(value = "amount")
+    private Integer goodsAmount;
 
     /**
      * 商品类目id
      */
+    @TableField(value = "category_id")
     private Integer categoryId;
+
+    private String goodsCategory;
 
     /**
      * 佣金率
      */
-    private Float rate;
+    @TableField(value = "rae")
+    private Float goodsRate;
 
 
 }

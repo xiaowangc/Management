@@ -1,6 +1,7 @@
 package com.libo.system.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -12,27 +13,32 @@ import java.io.Serializable;
 public class SysTalentEntity implements Serializable {
     private static final long serialVersionUID = -2517126671857190239L;
 
-    @TableId(type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "id",type = IdType.AUTO)
+    private Integer talId;
 
     /**
      *  达人名称
      */
-    private String name;
+    @TableField(value = "name")
+    private String talName;
     /**
      *  粉丝数量
      */
-    private Integer amount;
+    @TableField(value = "amount")
+    private Integer talAmount;
     /**
      *  达人标签
      */
-    private String tag;
+    @TableField(value = "tag")
+    private String talTag;
     /**
      *  达人推广评分
      */
-    private Integer grade;
+    @TableField(value = "grade")
+    private Integer talGrade;
     /**
      *  所属机构
      */
-    private String company;
+    @TableField(value = "company")
+    private String talCompany;
 }
