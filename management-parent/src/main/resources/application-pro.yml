@@ -1,6 +1,6 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://rm-2zer4vigk8e0l74g4.mysql.rds.aliyuncs.com:3306/management?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2b8
-    username: root
-    password: 123.com
+    url: jdbc:mysql://rm-2zer4vigk8e0l74g4so.mysql.rds.aliyuncs.com:3306/management?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2b8
+    username: yan_fa
+    password: yanfa!@#123

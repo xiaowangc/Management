@@ -23,6 +23,7 @@ public enum ResponseCode {
     ARTICLE_NO_FUND(HttpStatus.SC_NOT_FOUND,"文章不存在"),
     DELETE_ERROR(30002,"请先删除商品目录中对应的商品"),
     DELETE_USER_FAIL(30003,"删除账户失败，无权限"),
+    USER_INFO_ERROR(30004,"账户名或密码错误"),
 
     /** 40001 - 49999
      *  调用第三方出错
