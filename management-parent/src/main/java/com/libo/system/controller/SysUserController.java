@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @Api(tags = "用户管理")
 @Slf4j
 @RequestMapping("/sys/user")
@@ -27,9 +29,6 @@ public class SysUserController {
     @ApiOperation("新增用户")
     @PostMapping("/sava")
     public Response saveUser(@RequestBody @Validated SysUserEntity userEntity) {
-        if (!UserIdTypeConstants.USER_SUPER.equals(userEntity.getAuthority())) {
-            throw new ResponseException("无添加用户权限");
-        }
         userService.save(userEntity);
         return Response.ok();
     }
@@ -58,9 +57,16 @@ public class SysUserController {
     }
     @ApiOperation("分页查询用户列表")
     @GetMapping("/list")
-    public Response list(@RequestParam(value = "pagenum",defaultValue = "1") Integer pageNum,
-                         @RequestParam(value = "pagesize",defaultValue = "10") Integer pageSize,
-                         @RequestParam(value = "query") String userName) {
+    public Response list(Map<String,Object> params) {
+        Integer pageNum = (Integer) params.get("pagenum");
+        Integer pageSize = (Integer) params.get("pagesize");
+        String userName = (String) params.get("query");
+        if (pageNum == null) {
+            pageNum = 1;
+        }
+        if (pageSize == null) {
+            pageSize = 10;
+        }
         SysUserListByPageVO userList = userService.selectListByPage(pageNum,pageSize,userName);
         return Response.ok().data(userList);
     }

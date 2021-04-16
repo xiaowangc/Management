@@ -12,4 +12,7 @@ public interface SysGoodsDao extends BaseMapper<SysGoodsEntity> {
     List<SysGoodsEntity> selectGoodsByPage(@Param("offset") Integer offset,
                                            @Param("pageSize") Integer pageSize,
                                            @Param("goodsName") String goodsName);
+    int insert(@Param("sysGoodsEntity") SysGoodsEntity sysGoodsEntity);
+
+    List<SysGoodsEntity> selectIdAndName();
 }

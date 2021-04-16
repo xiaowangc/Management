@@ -12,4 +12,6 @@ public interface SysTalentDao extends BaseMapper<SysTalentEntity> {
     List<SysTalentEntity> selectListByPage(@Param("offset") Integer offset,
                                            @Param("pageSize") Integer pageSize,
                                            @Param("talentName") String talentName);
+
+    List<SysTalentEntity> selectIdAndName();
 }

@@ -29,4 +29,9 @@ public class SysTalentServiceImpl extends ServiceImpl<SysTalentDao, SysTalentEnt
         log.info("查询到的达人信息为：{}", JSONUtil.toJsonStr(list));
         return pageVO;
     }
+
+    @Override
+    public List<SysTalentEntity> selectIdAndName() {
+        return baseMapper.selectIdAndName();
+    }
 }

@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Data
@@ -21,27 +22,34 @@ public class SysGoodsEntity implements Serializable {
      * 商品名称
      */
     @NotBlank
+    @TableField(value = "name")
     private String goodsName;
 
     /**
      * 商品价格
      */
+    @TableField(value = "price")
     private Float goodsPrice;
     /**
      * 商品数量
      */
+    @TableField(value = "amount")
     private Integer goodsAmount;
 
     /**
      * 商品类目id
      */
+    @NotNull
+    @TableField(value = "category_id")
     private Integer categoryId;
 
+    @TableField(exist = false)
     private String goodsCategory;
 
     /**
      * 佣金率
      */
+    @TableField(value = "rate")
     private Float goodsRate;
 
 

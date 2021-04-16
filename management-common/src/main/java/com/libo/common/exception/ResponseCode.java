@@ -24,6 +24,9 @@ public enum ResponseCode {
     DELETE_ERROR(30002,"请先删除商品目录中对应的商品"),
     DELETE_USER_FAIL(30003,"删除账户失败，无权限"),
     USER_INFO_ERROR(30004,"账户名或密码错误"),
+    GOODS_NULL(30005,"商品不存在"),
+    TALENT_NULL(30006,"达人不存在"),
+    PLAN_NULL(30007,"推广计划不存在"),
 
     /** 40001 - 49999
      *  调用第三方出错

@@ -20,4 +20,9 @@
         limit #{offset},#{pageSize}
     </select>
 
+    <select id="selectIdAndName" resultMap="talent">
+        select id,name
+        from talents
+    </select>
+
 </mapper>

@@ -19,4 +19,26 @@
         limit #{offset},#{pageSize}
     </select>
     <!--    <select id="selectByName"></select>-->
+    <insert id="insert">
+        insert into goods
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            name,
+            price,
+            rate,
+            category_id,
+            amount
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+          #{sysGoodsEntity.goodsName},
+          #{sysGoodsEntity.goodsPrice},
+          #{sysGoodsEntity.goodsRate},
+          #{sysGoodsEntity.categoryId},
+          #{sysGoodsEntity.goodsAmount}
+        </trim>
+    </insert>
+    <select id="selectIdAndName" resultMap="goods">
+        select id,name
+        from goods
+    </select>
 </mapper>

@@ -1,5 +1,6 @@
 package com.libo.system.controller;
 
+import com.libo.common.exception.ResponseCode;
 import com.libo.common.exception.ResponseException;
 import com.libo.common.response.Response;
 import com.libo.system.domain.entity.SysGoodsEntity;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -27,9 +29,16 @@ public class SysGoodsController {
 
     @ApiOperation("分页获取商品列表")
     @GetMapping("/list")
-    public Response goodsList(@RequestParam(value = "pagenum",defaultValue = "1")Integer pageNum,
-                            @RequestParam(value = "pagesize",defaultValue = "10")Integer pageSize,
-                            @RequestParam(value = "query") String goodsName){
+    public Response goodsList(Map<String,Object> params){
+        Integer pageNum = (Integer) params.get("pagenum");
+        Integer pageSize = (Integer) params.get("pagesize");
+        String goodsName = (String) params.get("query");
+        if (pageNum == null) {
+            pageNum = 1;
+        }
+        if (pageSize == null) {
+            pageSize = 10;
+        }
         SysGoodsListByPageVO goodsListByPageVO = goodsService.selectGoodsByPage(pageNum,pageSize,goodsName);
         return Response.ok().data(goodsListByPageVO);
     }
@@ -62,4 +71,21 @@ public class SysGoodsController {
         }
         return Response.ok();
     }
+    @ApiOperation("根据id查询商品信息")
+    @GetMapping("/info/{id}")
+    public Response selectById(@PathVariable("id") Integer goodsId){
+        SysGoodsEntity goodsEntity = goodsService.getById(goodsId);
+        if (goodsEntity == null) {
+            throw new ResponseException(ResponseCode.GOODS_NULL);
+        }
+        return Response.ok().data(goodsEntity);
+    }
+
+    @ApiOperation("打印所有只包含商品id和商品名称")
+    @GetMapping("/select")
+    public Response selectByIdAndName() {
+        List<SysGoodsEntity> list = goodsService.selecyIdAndName();
+        return Response.ok().data(list);
+    }
+
 }

@@ -1,5 +1,7 @@
 package com.libo.system.controller;
 
+import com.libo.common.exception.ResponseCode;
+import com.libo.common.exception.ResponseException;
 import com.libo.common.response.Response;
 import com.libo.system.domain.entity.SysPlanEntity;
 import com.libo.system.domain.vo.SysPlanListByPageVO;
@@ -9,6 +11,8 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @Api(tags = "推广计划管理")
 @Slf4j
@@ -40,11 +44,27 @@ public class SysPlanController {
 
     @ApiOperation("查询推广计划")
     @GetMapping("/list")
-    public Response getPlanList(@RequestParam(name = "pagenum",defaultValue = "1") Integer pageNum,
-                                @RequestParam(name = "pagesize",defaultValue = "10")Integer pageSize,
-                                @RequestParam(name = "query")String planName){
+    public Response getPlanList(Map<String,Object> params) {
+        Integer pageNum = (Integer) params.get("pagenum");
+        Integer pageSize = (Integer) params.get("pagesize");
+        String planName = (String) params.get("query");
+        if (pageNum == null) {
+            pageNum = 1;
+        }
+        if (pageSize == null) {
+            pageSize = 10;
+        }
         SysPlanListByPageVO plansList = planService.selectPlanByPage(pageNum,pageSize,planName);
         return Response.ok().data(plansList);
+    }
+    @ApiOperation("根据id查询推广计划信息")
+    @GetMapping("/info/{id}")
+    public Response getById(@PathVariable("id") Integer id) {
+        SysPlanEntity planEntity = planService.getById(id);
+        if (planEntity == null) {
+            throw new ResponseException(ResponseCode.PLAN_NULL);
+        }
+        return Response.ok().data(planEntity);
     }
 
 

@@ -28,4 +28,19 @@ public class SysGoodsServiceImpl extends ServiceImpl<SysGoodsDao, SysGoodsEntity
         pageVO.setGoodsList(goodsList);
         return pageVO;
     }
+
+    @Override
+    public void saveGoods(SysGoodsEntity sysGoodsEntity) {
+        int count = baseMapper.insert(sysGoodsEntity);
+        if (count > 0) {
+            log.info("新增成功");
+        }else {
+            log.error("新增失败");
+        }
+    }
+
+    @Override
+    public List<SysGoodsEntity> selecyIdAndName() {
+        return baseMapper.selectIdAndName();
+    }
 }
