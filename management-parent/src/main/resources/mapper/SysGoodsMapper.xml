@@ -8,12 +8,14 @@
         <result column="rate" property="goodsRate" jdbcType="FLOAT" javaType="FLOAT"></result>
         <result column="category_id" property="categoryId" javaType="INTEGER"></result>
         <result column="amount" property="goodsAmount" javaType="INTEGER"></result>
+        <result column="category_name" property="goodsCategory" jdbcType="VARCHAR"></result>
     </resultMap>
     <select id="selectGoodsByPage" resultMap="goods">
-        select * from goods
+        select t1.id,t1.name,t1.price,t1.rate,t1.category_id,t2.category_name,t1.amount
+        from goods t1 left join category t2 on t1.category_id = t2.category_id
         <where>
             <if test="goodsName != null and goodsName != ''">
-                name = #{goodsName}
+                t1.name = #{goodsName}
             </if>
         </where>
         limit #{offset},#{pageSize}
@@ -40,5 +42,14 @@
     <select id="selectIdAndName" resultMap="goods">
         select id,name
         from goods
+    </select>
+
+    <select id="goodsNumWithAllCategory" resultMap="goods">
+        select *
+        from goods
+    </select>
+    <select id="goodsNumWithCategoryId" resultMap="goods">
+        select *
+        from goods where category_id = #{id}
     </select>
 </mapper>

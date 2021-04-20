@@ -4,6 +4,8 @@ import com.libo.common.exception.ResponseCode;
 import com.libo.common.exception.ResponseException;
 import com.libo.common.response.Response;
 import com.libo.system.domain.entity.SysGoodsEntity;
+import com.libo.system.domain.vo.SysAllCategoryWithNumVO;
+import com.libo.system.domain.vo.SysCategoryWithNumVO;
 import com.libo.system.domain.vo.SysGoodsListByPageVO;
 import com.libo.system.service.SysGoodsService;
 import io.swagger.annotations.Api;
@@ -28,8 +30,8 @@ public class SysGoodsController {
     private SysGoodsService goodsService;
 
     @ApiOperation("分页获取商品列表")
-    @GetMapping("/list")
-    public Response goodsList(Map<String,Object> params){
+    @PostMapping("/list")
+    public Response goodsList(@RequestBody Map<String,Object> params){
         Integer pageNum = (Integer) params.get("pagenum");
         Integer pageSize = (Integer) params.get("pagesize");
         String goodsName = (String) params.get("query");
@@ -86,6 +88,19 @@ public class SysGoodsController {
     public Response selectByIdAndName() {
         List<SysGoodsEntity> list = goodsService.selecyIdAndName();
         return Response.ok().data(list);
+    }
+    @ApiOperation("获取类目下的所有商品数量")
+    @GetMapping("/numByCategory")
+    public Response goodsNumWithCategory() {
+        List<SysAllCategoryWithNumVO> list = goodsService.goodsNumWithCategory();
+
+        return Response.ok().data(list);
+    }
+    @ApiOperation("查询指定类目下的所有商品数量")
+    @GetMapping("/allGoodsNum/{id}")
+    public Response goodsNumByCategoryId(@PathVariable(name = "id") Integer id) {
+        SysCategoryWithNumVO numVO = goodsService.goodsNumByCategoryId(id);
+        return Response.ok().data(numVO);
     }
 
 }

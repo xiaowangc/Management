@@ -9,6 +9,7 @@
         <result column="rate" property="plRate" jdbcType="FLOAT"></result>
         <result column="grade" property="plGrade" jdbcType="INTEGER"></result>
         <result column="amount" property="plAmount" jdbcType="INTEGER"></result>
+        <result column="create_time" property="plTime" jdbcType="TIMESTAMP"></result>
     </resultMap>
     <sql id="column">
         id,name,goodsname,talname,rate,grade,amount,create_time
