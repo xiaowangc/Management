@@ -30,10 +30,10 @@ public class SysGoodsController {
     private SysGoodsService goodsService;
 
     @ApiOperation("分页获取商品列表")
-    @PostMapping("/list")
-    public Response goodsList(@RequestBody Map<String,Object> params){
-        Integer pageNum = (Integer) params.get("pagenum");
-        Integer pageSize = (Integer) params.get("pagesize");
+    @GetMapping("/list")
+    public Response goodsList(@RequestParam Map<String,String> params){
+        Integer pageNum = Integer.parseInt(params.get("pagenum"));
+        Integer pageSize = Integer.parseInt(params.get("pagesize")) ;
         String goodsName = (String) params.get("query");
         if (pageNum == null) {
             pageNum = 1;

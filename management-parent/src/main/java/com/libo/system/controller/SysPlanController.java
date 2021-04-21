@@ -44,9 +44,9 @@ public class SysPlanController {
 
     @ApiOperation("查询推广计划")
     @GetMapping("/list")
-    public Response getPlanList(Map<String,Object> params) {
-        Integer pageNum = (Integer) params.get("pagenum");
-        Integer pageSize = (Integer) params.get("pagesize");
+    public Response getPlanList(@RequestParam Map<String,String> params) {
+        Integer pageNum = Integer.parseInt(params.get("pagenum"));
+        Integer pageSize = Integer.parseInt(params.get("pagesize"));
         String planName = (String) params.get("query");
         if (pageNum == null) {
             pageNum = 1;

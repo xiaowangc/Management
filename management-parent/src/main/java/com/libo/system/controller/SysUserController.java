@@ -57,9 +57,9 @@ public class SysUserController {
     }
     @ApiOperation("分页查询用户列表")
     @GetMapping("/list")
-    public Response list(Map<String,Object> params) {
-        Integer pageNum = (Integer) params.get("pagenum");
-        Integer pageSize = (Integer) params.get("pagesize");
+    public Response list(@RequestParam Map<String,String> params) {
+        Integer pageNum = Integer.parseInt(params.get("pagenum"));
+        Integer pageSize = Integer.parseInt(params.get("pagesize"));
         String userName = (String) params.get("query");
         if (pageNum == null) {
             pageNum = 1;
